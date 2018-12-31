@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class removeduplicates {
+static Scanner scn=new Scanner(System.in);
+	public static void main(String[] args) {
+    String str=scn.next();
+    output(str, "");
+	}
+public static void output(String str, String ans) {
+   if(str.length()==0) {
+	   System.out.println(ans);
+	   return;
+   }
+   int count=0;
+   char ch1=str.charAt(0);
+   String ros=str.substring(1);
+   int i=1;
+   while(i<str.length() && str.charAt(i)==ch1 ) {
+	   count++;
+	   i++;
+   }
+   ros=ros.substring(count);
+   output(ros, ans+ch1);
+   
+}
+}
