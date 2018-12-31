@@ -1,0 +1,104 @@
+import java.util.*;
+
+public class Main {
+
+public static void main(String args[]) {
+
+
+
+Scanner scn = new Scanner(System.in);
+
+int n = scn.nextInt();
+
+int count=1;
+
+while(count<=n)
+
+{
+
+int size=scn.nextInt();
+
+int[] arr= new int[size];
+
+int flag2=0,j=0;
+
+for(int i=0;i<size;i++)
+
+{
+
+arr[i]=scn.nextInt();
+
+}
+
+for(int i=0;i<size;i++)
+
+{ 
+
+int temp=-1;
+
+flag2=0;
+
+for( j=i+1;j<size;j++)
+
+{
+
+if(arr[j]>arr[i])
+
+{
+
+temp=arr[j];
+
+break;
+
+}
+
+}
+
+for(int k=j+1;k<size;k++)
+
+{
+
+if(temp==-1)
+
+{
+
+System.out.println(-1+ " ");
+
+break;
+
+}
+
+if(arr[k]<temp)
+
+{
+
+System.out.print(arr[k]+" ");
+
+flag2=1;
+
+break;
+
+}
+
+
+}
+
+
+if(flag2==0)
+
+System.out.print(-1+" ");
+
+
+
+}
+
+
+System.out.println();
+
+count++;
+
+}
+
+}
+
+}
