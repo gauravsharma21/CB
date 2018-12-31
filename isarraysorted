@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class sorted {
+static Scanner scn=new Scanner(System.in);
+	public static void main(String[] args) {
+    int size=scn.nextInt();
+		int[] arr=new int[size];		
+       for(int i=0; i<size; i++) {
+    	   arr[i]= scn.nextInt();
+       }
+       if(output(arr, 0)) {
+    	   System.out.println("true");
+       }
+       else {
+    	   System.out.println("false");
+       }
+	}
+public static boolean output(int[] arr, int vidx) {
+     if(vidx==arr.length-1) {
+    	 return true;
+     }
+	 
+	 if(output(arr, vidx+1)) {
+		 if(arr[vidx]>arr[vidx+1]) {
+			 return false;
+		 }
+		 else {
+			 return true;
+		 }
+	 }
+	 else {
+		 return false;
+	 }
+
+}
+}
