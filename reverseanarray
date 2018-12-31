@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class reverse {
+static Scanner scn=new Scanner(System.in);
+	public static void main(String[] args) {
+	int size=scn.nextInt();
+	int[] arr=new int[size];
+	for(int i=0; i<size; i++) {
+		arr[i]=scn.nextInt();
+	}
+    output(arr, 0);
+	}
+public static void output(int[] arr , int vidx) {
+	if(vidx==arr.length) {
+		return;
+	}
+	output(arr, vidx+1);
+	System.out.print(arr[vidx]+" ");
+	
+}
+}
