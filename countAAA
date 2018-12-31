@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class countaaa {
+
+	public static void main(String[] args) {
+Scanner scn=new Scanner(System.in);
+String str=scn.next();
+overlappingallowed(str, 0);
+overlappingnotallowed(str, 0);
+	}
+public static void overlappingallowed(String str, int count) {
+	if(str.length()<=2) {
+		System.out.println(count);
+		return;
+	}
+	char ch1=str.charAt(0);
+	char ch2=str.charAt(1);
+	char ch3=str.charAt(2);
+	String ros=str.substring(1);
+	if(ch1=='a' && ch2=='a' && ch3=='a') {
+		count++;
+	}
+    overlappingallowed(ros, count);
+}
+public static void overlappingnotallowed(String str, int count) {
+	if(str.length()<=2) {
+		System.out.println(count);
+		return;
+	}
+	char ch1=str.charAt(0);
+	char ch2=str.charAt(1);
+	char ch3=str.charAt(2);
+	String ros=str.substring(3);
+	if(ch1=='a' && ch2=='a' && ch3=='a') {
+		count++;
+	}
+    overlappingnotallowed(ros, count);
+}
+}
