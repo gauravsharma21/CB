@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+public class nthtriangle {
+static Scanner scn=new Scanner(System.in);
+	public static void main(String[] args) {
+    int n=scn.nextInt();
+    System.out.println(output(n));
+	}
+public static int output(int n) {
+	if(n==1) {
+		return 1;
+	}	
+	int sum=n+output(n-1);
+	return sum;
+}
+}
