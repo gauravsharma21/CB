@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class stringtointeger {
+static Scanner scn=new Scanner(System.in);
+	public static void main(String[] args) {
+		String str=scn.next();
+        System.out.println(output(str));
+	}
+public static int output(String str) {
+       if(str.length()==0) {
+    	   return 0;
+       }
+	   int ch=(int)str.charAt(0)-48;//1
+       String ros=str.substring(1);//234
+       int sum=ch*(int)Math.pow(10, ros.length())+output(ros);
+       return sum;
+}
+}
