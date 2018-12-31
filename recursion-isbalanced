@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+
+public class isbalanced {
+
+	public static void main(String[] args) {
+Scanner scn=new Scanner(System.in);
+String str=scn.next();
+System.out.println(output(str, ""));
+	}
+public static boolean output(String str, String ans) {
+if(str.length()==0) {
+   if(ans.length()==0)
+	return true;
+   else
+	   return false;
+}
+	
+	char ch=str.charAt(0);
+String ros=str.substring(1);
+
+if(ch=='(' || ch=='{' || ch=='[') {
+	ans+=ch;
+}
+else if(ch==')' || ch=='}' || ch==']') {
+	if(ans.length()!=0) {
+		
+		char last=ans.charAt(ans.length()-1); 
+	     if(last=='{' && ch!= '}') {
+	    	 return false;
+	     }
+	     else if(last == '(' && ch!=')') {
+	    	 return false;
+	     }
+	     else if(last=='[' && ch!=']') {
+	    	 return false;
+	     }
+	     
+	    	 ans=ans.substring(0, ans.length()-1);
+	    	 
+	     
+	}
+	else {
+		return false;
+	}
+}
+return output(ros, ans);
+}
+}
