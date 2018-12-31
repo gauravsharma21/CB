@@ -1,0 +1,31 @@
+package assignment;
+
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class delfromLL {
+
+	public static void main(String[] args) {
+		LinkedList<Integer> list = new LinkedList<>();
+		Scanner scn = new Scanner(System.in);
+		int N = scn.nextInt();
+		int q = scn.nextInt();
+		int count = 1;
+		while (count <= N) {
+			list.addLast(scn.nextInt());
+			count++;
+		}
+		int i = 0;
+		while(i < q) {
+			int t = scn.nextInt();
+			list.remove(t);
+			for(int j = 0; j < list.size(); j++) {
+				System.out.print(list.get(j) + " ");
+			}
+			System.out.println();
+			i++;
+		}
+		
+	}
+
+}
