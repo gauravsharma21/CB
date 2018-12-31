@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class TowerOfHanoi {
+
+	public static void main(String[] args) { 
+    Scanner scn=new Scanner(System.in);
+    int n=scn.nextInt();
+    TOH(n, "T1", "T2", "T3" );
+    System.out.println(TOHcount(n, "T1", "T3", "T2"));
+	}
+public static void TOH(int n, String src, String dst, String help) {
+	if(n==1) {
+		System.out.println("Move 1th disc from "+ src + " to "+ dst);
+		return;
+	 
+	}
+	
+	TOH(n-1, src, help, dst);
+	System.out.println("Move "+n+"th disc from "+ src+" to "+dst);
+	TOH(n-1, help, dst, src);
+}
+public static int TOHcount(int n, String src, String dst, String help) {
+	int count=0;
+	if(n==1) {
+		return 1;
+	}
+	count=count+TOHcount(n-1, src, help, dst);
+	count=count+TOHcount(n-1, help, dst, src);
+	
+	return count+1;
+}
+}
