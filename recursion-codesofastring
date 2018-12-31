@@ -1,0 +1,53 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+public class codesofstring {
+
+	public static void main(String[] args) {
+    Scanner scn=new Scanner(System.in);
+    String str=scn.next();
+    ArrayList<String> ans=codesofastring(str);
+		System.out.println(ans);
+	}
+public static ArrayList<String> codesofastring(String str) {
+	if(str.length()==0) {
+		ArrayList<String> bres=new ArrayList<>();
+		bres.add("");
+		return bres;
+	}
+	
+	char ch=str.charAt(0);
+	String ros=str.substring(1);
+    
+	char val=(char) (ch+48);
+	
+	ArrayList<String> rr=codesofastring(ros);
+	ArrayList<String> mr= new ArrayList<>();
+	
+	for(String s: rr) {
+		mr.add(val + s);
+	}
+	
+	if(str.length()>1) {
+	
+		String ch2=str.substring(0, 2);
+	    int value=Integer.parseInt(ch2);
+	    
+	    if(value<=26) {
+	    char alpha = (char)('a'+ value - 1);
+	    
+	    ros=str.substring(2);
+	    
+	    rr = codesofastring(ros);
+	    
+	    for(String s: rr) {
+	    	mr.add(alpha+s);
+	    }
+}
+	    
+}
+	return mr;
+}
+
+}
