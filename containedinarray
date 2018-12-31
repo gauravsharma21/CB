@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class containedinarray {
+static Scanner scn=new Scanner(System.in);
+	public static void main(String[] args) {
+		 int size=scn.nextInt();
+			int[] arr=new int[size];		
+	       for(int i=0; i<size; i++) {
+	    	   arr[i]= scn.nextInt();
+	       }
+         int M=scn.nextInt();
+         if(output(arr, M, 0)) {
+        	 System.out.println("false");
+         }
+         else {
+        	 System.out.println("true");
+         }
+	}
+public static boolean output(int[] arr, int M, int vidx) {
+	if(vidx==arr.length) {
+		return true;
+	}
+	if(output(arr, M, vidx+1)) {
+		if(arr[vidx]==M) {
+		return false;
+		}
+	
+	else {
+		return true;
+	}
+}
+	else {
+		return false;
+	}
+}
+}
