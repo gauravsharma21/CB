@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class stindex {
+
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		int size = scn.nextInt();
+		int[] arr = new int[size];
+		for (int i = 0; i < size; i++)
+			arr[i] = scn.nextInt();
+		int item = scn.nextInt();
+		int ans = output(arr, item, 0);
+		System.out.println(ans);
+	}
+
+	public static int output(int[] arr, int item, int vidx) {
+		if (vidx == arr.length)
+			return -1;
+		if (arr[vidx] == item)
+			return vidx;
+		int ans = output(arr, item, vidx + 1);
+		return ans;
+	}
+}
