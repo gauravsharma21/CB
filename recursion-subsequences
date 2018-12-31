@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class recursionsubsequences {
+
+	public static void main(String[] args) {
+       Scanner scn=new Scanner(System.in);
+       String str=scn.next();
+       System.out.println(output2(str, ""));
+       output(str, "");
+	}
+public static void output(String str, String ans) {
+	if(str.length()==0) {
+		System.out.println(ans);
+		return;
+	}
+	char ch=str.charAt(0);
+	String ros=str.substring(1);
+	output(ros, ans);
+	output(ros, ans+ch);
+	
+}
+public static int output2(String str, String ans) {
+	int count=0;
+	if(str.length()==0) {
+		
+		return 1;
+	}
+	char ch=str.charAt(0);
+	String ros=str.substring(1);
+	count+=output2(ros, ans);
+	count+=output2(ros, ans+ch);
+	return count;
+}
+}
