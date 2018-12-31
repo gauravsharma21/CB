@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class recursiontwins {
+
+	public static void main(String[] args) {
+	Scanner scn=new Scanner(System.in);
+    String str=scn.next();
+    output(str, 0);
+	}
+public static void output(String str, int count) {
+	if(str.length()==2) {
+		System.out.println(count);
+		return;
+	}
+	char ch1=str.charAt(0);
+	char ch2=str.charAt(2);
+	String ros=str.substring(1);
+	if(ch1==ch2) {
+		count++;
+	}
+	output(ros,count);
+}
+}
