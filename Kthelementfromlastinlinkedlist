@@ -1,0 +1,23 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+        Scanner scn = new Scanner(System.in);
+        int[] arr = new int[100000];
+        int i = 0;
+        int count = 0;
+        while(i<100000){
+         int in = scn.nextInt();
+            if(in == -1){
+                break;
+            }
+            else{
+                arr[i] = in;
+                count++;
+            }
+          
+            i++;
+        }
+          int k = scn.nextInt();
+            System.out.println(arr[count-k]);
+    }
+}
