@@ -1,0 +1,98 @@
+import java.util.*;
+public class Main {
+
+	static Scanner scn = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		Main m = new Main();
+		int[] post = takeInput();
+		int[] in = takeInput();
+		BinaryTree bt = m.new BinaryTree(post, in);
+		bt.display();
+	}
+
+	public static int[] takeInput() {
+		int n = scn.nextInt();
+
+		int[] rv = new int[n];
+		for (int i = 0; i < rv.length; i++) {
+			rv[i] = scn.nextInt();
+		}
+
+		return rv;
+	}
+
+	private class BinaryTree {
+		private class Node {
+			int data;
+			Node left;
+			Node right;
+		}
+
+		private Node root;
+		private int size;
+
+		public BinaryTree(int[] post, int[] in) {
+			this.root = this.construct(post, 0, post.length - 1, in, 0, in.length - 1);
+		}
+
+		private Node construct(int[] post, int plo, int phi, int[] in, int ilo, int ihi) {
+	if (ilo > ihi || plo > phi){
+		return null;
+	}
+ 
+	int rootValue = post[phi];
+	Node root = new Node();
+	root.data = rootValue;
+ 
+	int k = 0;
+	for (int i = 0; i < in.length; i++) {
+		if (in[i] == rootValue) {
+			k = i;
+			break;
+		}
+	}
+ 
+	root.left = construct(in, ilo, k - 1, post, plo,
+			plo + k - (ilo + 1));
+	// Becuase k is not the length, it it need to -(inStart+1) to get the length
+	root.right = construct(in, k + 1, ihi, post, plo + k- ilo, phi - 1);
+	// postStart+k-inStart = postStart+k-(inStart+1) +1
+ 
+	return root;
+		}
+
+		public void display() {
+			this.display(this.root);
+		}
+
+		private void display(Node node) {
+			if (node == null) {
+				return;
+			}
+
+			String str = "";
+
+			if (node.left != null) {
+				str += node.left.data;
+			} else {
+				str += "END";
+			}
+
+			str += " => " + node.data + " <= ";
+
+			if (node.right != null) {
+				str += node.right.data;
+			} else {
+				str += "END";
+			}
+
+			System.out.println(str);
+
+			this.display(node.left);
+			this.display(node.right);
+		}
+
+	}
+
+}
