@@ -1,0 +1,55 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+		Scanner scn = new Scanner(System.in);
+
+		int n = scn.nextInt();
+
+		long[] arr = new long[n];
+
+		for (int i = 0; i < n; i++) {
+
+			arr[i] = scn.nextLong();
+
+		}
+
+		long[] strg = new long[arr.length];
+
+		Arrays.fill(strg, 1);
+
+		for (int i = 1; i < strg.length; i++) {
+
+			for (int j = 0; j < i; j++) {
+
+				if (arr[j] < arr[i]) {
+
+					long nval = strg[j] + 1;
+
+					if (nval > strg[i]) {
+
+						strg[i] = nval;
+
+					}
+
+				}
+
+			}
+
+		}
+
+		long ans = 0;
+
+		for (long val : strg) {
+
+			if (val > ans) {
+
+				ans = val;
+
+			}
+
+		}
+
+		System.out.println(ans);
+
+	}
+    }
