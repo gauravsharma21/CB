@@ -1,0 +1,78 @@
+import java.util.*;
+public class Main3 {
+
+	static Scanner scn = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		Main3 m = new Main3();
+		BinaryTree bt = m.new BinaryTree();
+		System.out.println(bt.isBalanced());
+	}
+
+	private class BinaryTree {
+		private class Node {
+			int data;
+			Node left;
+			Node right;
+		}
+
+		private Node root;
+		private int size;
+
+		public BinaryTree() {
+			this.root = this.takeInput(null, false);
+		}
+
+		public Node takeInput(Node parent, boolean ilc) {
+
+			int cdata = scn.nextInt();
+			Node child = new Node();
+			child.data = cdata;
+			this.size++;
+
+			// left
+			boolean hlc = scn.nextBoolean();
+
+			if (hlc) {
+				child.left = this.takeInput(child, true);
+			}
+
+			// right
+			boolean hrc = scn.nextBoolean();
+
+			if (hrc) {
+				child.right = this.takeInput(child, false);
+			}
+
+			// return
+			return child;
+		}
+
+		public boolean isBalanced() {
+			return this.isBalanced(this.root).isBalanced;
+		}
+
+		private BalancedPair isBalanced(Node node) {
+			if (node == null) {
+			BalancedPair bp = new BalancedPair();
+			return bp;
+		}
+		BalancedPair lbp = isBalanced(node.left);
+		BalancedPair rbp = isBalanced(node.right);
+		BalancedPair np = new BalancedPair();
+		np.height = Math.max(lbp.height, rbp.height) + 1;
+		if (lbp.isBalanced && rbp.isBalanced && Math.abs(lbp.height - rbp.height) <= 1) {
+			np.isBalanced = true;
+		} else {
+			np.isBalanced = false;
+		}
+		return np;
+		}
+
+		private class BalancedPair {
+			int height;
+			boolean isBalanced;
+		}
+
+	}
+}
