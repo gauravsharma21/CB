@@ -1,0 +1,61 @@
+import java.util.*;
+public class Main {
+
+	static Scanner scn = new Scanner(System.in);
+
+	public static void main(String[] args) {
+
+		Main m = new Main();
+		GenericTree gt = m.new GenericTree();
+		System.out.println(gt.countLeafNodes());
+	}
+
+	private class GenericTree {
+		private class Node {
+			int data;
+			ArrayList<Node> children = new ArrayList<>();
+		}
+
+		private Node root;
+
+		public GenericTree() {
+			this.root = this.takeInput(scn, null, -1);
+		}
+
+		private Node takeInput(Scanner scn, Node parent, int i) {
+
+			int childData = scn.nextInt();
+
+			int numGC = scn.nextInt();
+
+			Node child = new Node();
+			child.data = childData;
+
+			for (int j = 0; j < numGC; j++) {
+				Node gc = this.takeInput(scn, child, j);
+				child.children.add(gc);
+			}
+
+			return child;
+		}
+
+		public int countLeafNodes() {
+			return this.countLeafNodes(this.root);
+		}
+
+		private int countLeafNodes(Node node) {
+		    int count = 0;
+		    if(node == null){
+		        return 0;
+		    }
+		    if(node.children.size()==0){
+		        return 1;
+		    }
+		    for(Node child: node.children){
+		        count = count + countLeafNodes(child);
+		    }
+		    return count;
+		}
+	}
+
+}
